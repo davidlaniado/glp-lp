@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>RightWell — Personalized Weight Loss with Prescription GLP-1 Medication</title>
+<style>
+  :root{
+    --indigo:#39345C;
+    --indigo-deep:#2E2A4C;
+    --peri:#959CFF;
+    --peri-bright:#7C83FF;
+    --peri-tint:#EFF0FF;
+    --orange:#FF5A2C;
+    --cream:#F9F7F4;
+    --muted:#6b6787;
+    --line:#ECE9F5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--cream);
+    color:var(--indigo);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .wrap{max-width:560px;margin:0 auto;padding:0 20px;}
+  @media(min-width:960px){.wrap{max-width:1080px;}}
+  .btn{
+    display:inline-block;text-decoration:none;text-align:center;
+    background:var(--indigo);color:#fff;
+    font-weight:700;border-radius:999px;
+    padding:14px 34px;font-size:16px;
+  }
+  .btn-orange{background:var(--orange);box-shadow:0 2px 10px rgba(255,90,44,.3);}
+  .btn-block{width:100%;max-width:360px;}
+  h1,h2{letter-spacing:-0.5px;line-height:1.15;text-wrap:balance;}
+  .finePrint{font-size:11px;color:#9a97b0;line-height:1.6;}
+
+  /* ---------- ticker ---------- */
+  .ticker{background:var(--indigo);overflow:hidden;padding:9px 0;}
+  .ticker-track{display:flex;gap:36px;white-space:nowrap;animation:tick 28s linear infinite;width:max-content;}
+  .ticker-track span{color:#DCDEF5;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;}
+  .ticker-track span::before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--peri);color:#fff;font-size:10px;font-weight:800;}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.ticker-track{animation:none;}}
+
+  /* ---------- header ---------- */
+  header{background:var(--cream);padding:14px 0;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+  .logo-badge{width:32px;height:32px;border-radius:50%;background:var(--peri);display:flex;align-items:center;justify-content:center;color:#fff;font-family:Georgia,serif;font-size:20px;font-weight:700;font-style:italic;}
+  .logo-word{color:var(--indigo);font-weight:800;font-size:20px;letter-spacing:-0.4px;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:28px 0 40px;}
+  .hero-grid{display:grid;gap:26px;}
+  @media(min-width:960px){.hero-grid{grid-template-columns:1fr 1fr;align-items:center;}}
+  .hero-img img{border-radius:24px;width:100%;}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);}
+  .avatar-row{display:flex;}
+  .avatar-row img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--cream);}
+  .avatar-row img+img{margin-left:-9px;}
+  .hero h1{font-size:38px;font-weight:800;margin:12px 0 20px;}
+  .hero h1 .accent{color:var(--peri-bright);}
+  @media(min-width:960px){.hero h1{font-size:52px;}}
+  .hero .btn{margin-bottom:26px;}
+  .checks{display:grid;gap:12px;}
+  .checks div{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;}
+  .checks div::before{content:"✓";flex:0 0 20px;height:20px;border-radius:50%;background:var(--peri-bright);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:2px;}
+
+  /* ---------- diets fail / chart ---------- */
+  .diets{padding:44px 0;}
+  .diets h2{font-size:30px;font-weight:800;text-align:center;margin-bottom:10px;}
+  .diets .sub{text-align:center;color:var(--muted);font-size:16px;max-width:560px;margin:0 auto 26px;}
+  .chart-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 16px 12px;margin-bottom:16px;}
+  .chart-card svg{width:100%;height:auto;display:block;}
+  .diets .finePrint{max-width:640px;margin:0 auto;text-align:center;}
+  @media(min-width:960px){.diets h2{font-size:38px;}.chart-card{max-width:760px;margin:0 auto 16px;}}
+
+  /* ---------- member quotes ---------- */
+  .quotes{padding:44px 0;}
+  .quotes h2{font-size:30px;font-weight:800;text-align:center;margin-bottom:6px;}
+  .quotes .sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:26px;}
+  .quote-grid{display:grid;gap:16px;}
+  @media(min-width:960px){.quote-grid{grid-template-columns:repeat(3,1fr);}.quotes h2{font-size:38px;}}
+  .qcard{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;}
+  .qcard img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+  .qbody{padding:16px 18px 20px;}
+  .qstars{color:#F5A623;font-size:14px;letter-spacing:2px;margin-bottom:8px;}
+  .qbody p{font-size:14px;color:#4d4870;margin-bottom:12px;}
+  .qwho{font-weight:800;font-size:14px;}
+  .qtag{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#0F9D6E;font-weight:700;margin-top:4px;}
+  .qtag::before{content:"✓";width:14px;height:14px;border-radius:50%;background:#0F9D6E;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:9px;}
+  .quotes .finePrint{text-align:center;margin-top:16px;}
+
+  /* ---------- gamechanger ---------- */
+  .game{padding:44px 0;}
+  .game-grid{display:grid;gap:26px;}
+  @media(min-width:960px){.game-grid{grid-template-columns:1fr 1fr;align-items:center;}}
+  .pen-duo{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;display:flex;gap:6px;align-items:center;}
+  .pen-duo img{width:50%;}
+  .game h2{font-size:32px;font-weight:800;margin-bottom:6px;}
+  .game h2 .accent{color:var(--peri-bright);}
+  .game h3{font-size:19px;margin:10px 0 8px;}
+  .game .lead{color:var(--muted);font-size:16px;margin-bottom:22px;}
+  .game-cards{display:grid;gap:12px;}
+  .gcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;}
+  .gcard b{display:block;font-size:16px;margin-bottom:4px;color:var(--peri-bright);}
+  .gcard p{font-size:14px;color:#4d4870;}
+  .game .btn{margin-top:22px;}
+  @media(min-width:960px){.game h2{font-size:40px;}}
+
+  /* ---------- results ---------- */
+  .results{padding:44px 0;}
+  .results h2{font-size:30px;font-weight:800;text-align:center;margin-bottom:16px;}
+  @media(min-width:960px){.results h2{font-size:38px;}}
+  .results .checks{max-width:420px;margin:0 auto 28px;}
+  .rgrid{display:grid;gap:16px;}
+  @media(min-width:960px){.rgrid{grid-template-columns:repeat(3,1fr);}}
+  .rcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;}
+  .rcard img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+  .rmeta{padding:14px 16px 18px;}
+  .rmeta b{font-size:15px;display:block;}
+  .rmeta .lbs{color:var(--orange);font-weight:800;font-size:17px;}
+  .rmeta p{font-size:13px;color:#4d4870;margin-top:6px;}
+  .results .finePrint{text-align:center;margin-top:14px;}
+  .results .cta-row{text-align:center;margin-top:22px;}
+
+  /* ---------- how it works ---------- */
+  .how{padding:44px 0;background:#fff;}
+  .how h2{font-size:30px;font-weight:800;text-align:center;margin-bottom:8px;}
+  .how .sub{text-align:center;color:var(--muted);font-size:16px;max-width:520px;margin:0 auto 28px;}
+  .how-grid{display:grid;gap:14px;}
+  @media(min-width:960px){.how-grid{grid-template-columns:repeat(4,1fr);}.how h2{font-size:38px;}}
+  .hcard{background:var(--cream);border-radius:18px;padding:22px;}
+  .hnum{width:38px;height:38px;border-radius:50%;background:var(--indigo);color:#fff;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+  .hcard b{display:block;font-size:16px;margin-bottom:6px;}
+  .hcard p{font-size:14px;color:#4d4870;}
+  .how .cta-row{text-align:center;margin-top:26px;}
+
+  /* ---------- pricing ---------- */
+  .pricing{padding:48px 0;}
+  .pricing h2{font-size:30px;font-weight:800;text-align:center;margin-bottom:8px;}
+  .pricing .sub{text-align:center;color:var(--muted);font-size:16px;max-width:560px;margin:0 auto 28px;}
+  @media(min-width:960px){.pricing h2{font-size:38px;}}
+  .pcards{display:grid;gap:18px;}
+  @media(min-width:960px){.pcards{grid-template-columns:1fr 1fr;max-width:860px;margin:0 auto;}}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;}
+  .pcard img{height:230px;object-fit:contain;margin:0 auto 16px;}
+  .pcard h3{font-size:26px;font-weight:800;}
+  .pcard h3 sup{font-size:13px;}
+  .price{font-size:34px;font-weight:800;color:var(--indigo);margin:4px 0 0;font-variant-numeric:tabular-nums;}
+  .price small{font-size:15px;color:var(--muted);font-weight:600;}
+  .contains{display:inline-block;background:var(--peri-tint);color:var(--peri-bright);font-weight:700;font-size:13px;border-radius:999px;padding:5px 14px;margin:12px 0 18px;}
+  .pcard .btn{margin-bottom:18px;}
+  .pincl{border-top:1px solid var(--line);padding-top:16px;}
+  .pincl b{font-size:14px;display:block;margin-bottom:10px;}
+  .pincl div{display:flex;gap:9px;font-size:13px;color:#4d4870;margin-bottom:8px;align-items:flex-start;}
+  .pincl div::before{content:"✓";flex:0 0 16px;height:16px;border-radius:50%;background:var(--peri-bright);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;margin-top:2px;}
+
+  /* ---------- providers ---------- */
+  .prov{padding:44px 0;}
+  .prov-grid{display:grid;gap:26px;}
+  @media(min-width:960px){.prov-grid{grid-template-columns:1fr 1fr;align-items:center;}}
+  .prov img{border-radius:24px;width:100%;}
+  .prov h2{font-size:30px;font-weight:800;margin-bottom:12px;}
+  .prov p{color:var(--muted);font-size:16px;margin-bottom:22px;}
+  @media(min-width:960px){.prov h2{font-size:38px;}}
+
+  /* ---------- quote band ---------- */
+  .press{padding:44px 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .press blockquote{font-size:19px;font-weight:600;text-align:center;max-width:640px;margin:0 auto;color:var(--indigo);font-style:italic;}
+  .press .who{text-align:center;color:var(--muted);font-size:13px;margin-top:12px;font-weight:700;}
+
+  /* ---------- ready ---------- */
+  .ready{padding:48px 0;}
+  .ready h2{font-size:32px;font-weight:800;text-align:center;margin-bottom:24px;}
+  .ready h2 .accent{color:var(--peri-bright);}
+  @media(min-width:960px){.ready h2{font-size:40px;}}
+  .ready .checks{max-width:420px;margin:0 auto;}
+
+  /* ---------- faq ---------- */
+  .faq{padding:10px 0 48px;}
+  .faq-grid{display:grid;gap:26px;}
+  @media(min-width:960px){.faq-grid{grid-template-columns:1.2fr .8fr;align-items:center;}}
+  .faq h2{font-size:28px;font-weight:800;margin-bottom:18px;}
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px;}
+  summary{font-weight:700;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";font-size:20px;color:var(--peri-bright);flex:0 0 auto;}
+  details[open] summary::after{content:"–";}
+  details p{margin-top:10px;font-size:14px;color:#4d4870;}
+  .faq img{border-radius:24px;width:100%;}
+  .faq .tagline{font-weight:800;font-size:18px;margin-top:18px;text-align:center;}
+
+  /* ---------- final ---------- */
+  .final{background:var(--indigo);text-align:center;padding:52px 0;}
+  .final h2{color:#fff;font-size:30px;font-weight:800;margin-bottom:8px;}
+  .final p{color:#C9CBE8;font-size:15px;margin-bottom:24px;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--indigo-deep);padding:36px 0 44px;}
+  footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin:22px 0 10px;}
+  footer a{color:#C9CBE8;font-size:13px;text-decoration:none;display:block;margin-bottom:6px;}
+  footer p{color:#9A97B8;font-size:12px;line-height:1.7;margin-bottom:12px;}
+  .copyright{color:#7b7796;font-size:12px;margin-top:14px;}
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Free &amp; discreet shipping on every order</span>
+    <span>Licensed US pharmacies</span>
+    <span>100% online process</span>
+    <span>Unlimited provider messaging</span>
+    <span>Transparent pricing, no hidden fees</span>
+    <span>Free &amp; discreet shipping on every order</span>
+    <span>Licensed US pharmacies</span>
+    <span>100% online process</span>
+    <span>Unlimited provider messaging</span>
+    <span>Transparent pricing, no hidden fees</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="#">
+      <span class="logo-badge">r</span>
+      <span class="logo-word">RightWell</span>
+    </a>
+    <a class="btn cta" href="#">Get Started</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-img"><img src="assets/hero-woman.jpg" alt="Happy RightWell member celebrating her progress"></div>
+    <div>
+      <div class="eyebrow">
+        <span class="avatar-row">
+          <img src="assets/member-julie.jpg" alt="">
+          <img src="assets/member-james.jpg" alt="">
+          <img src="assets/member-michelle.jpg" alt="">
+        </span>
+        Join thousands transforming their metabolic health
+      </div>
+      <h1><span class="accent">At last,</span> real weight&nbsp;loss support with prescription GLP-1 medication.</h1>
+      <a class="btn btn-orange btn-block cta" href="#">Get Started</a>
+      <div class="checks">
+        <div>See progress week after week</div>
+        <div>Doctor-guided treatment plans built around your body</div>
+        <div>Free delivery, straight to your door</div>
+        <div>No insurance required, no hidden fees</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diets">
+  <div class="wrap">
+    <h2>Most diets fail because they fight your metabolism</h2>
+    <p class="sub">Study after study shows that cutting calories and over-exercising don&rsquo;t hold up long-term. GLP-1 medication works differently.</p>
+    <div class="chart-card">
+      <svg viewBox="0 0 700 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart comparing diet and exercise alone with GLP-1 medication over 12 months, showing up to 6x more weight loss">
+        <g stroke="#EFEDF7" stroke-width="1.5">
+          <line x1="40" y1="60" x2="660" y2="60"/>
+          <line x1="40" y1="140" x2="660" y2="140"/>
+          <line x1="40" y1="220" x2="660" y2="220"/>
+          <line x1="40" y1="300" x2="660" y2="300"/>
+          <line x1="40" y1="380" x2="660" y2="380"/>
+        </g>
+        <path d="M60,80 C220,95 420,120 630,190" fill="none" stroke="#D8CBB8" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="630" cy="190" r="10" fill="#D8CBB8"/>
+        <path d="M60,80 C200,150 400,300 630,345" fill="none" stroke="#7C83FF" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="345" cy="232" r="9" fill="#fff" stroke="#7C83FF" stroke-width="4"/>
+        <circle cx="630" cy="345" r="11" fill="#fff" stroke="#7C83FF" stroke-width="5"/>
+        <circle cx="60" cy="80" r="8" fill="#39345C"/>
+        <g>
+          <rect x="88" y="118" rx="17" ry="17" width="196" height="36" fill="#fff" stroke="#ECE9F5"/>
+          <text x="186" y="142" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="17" font-weight="700" fill="#6b6787">Diet &amp; Exercise Only</text>
+        </g>
+        <g>
+          <rect x="220" y="330" rx="17" ry="17" width="222" height="36" fill="#39345C"/>
+          <text x="331" y="354" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">With GLP-1 Medication</text>
+        </g>
+        <g>
+          <rect x="520" y="200" rx="22" ry="22" width="140" height="104" fill="#EFF0FF"/>
+          <text x="590" y="242" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="34" font-weight="800" fill="#39345C">6x</text>
+          <text x="590" y="266" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="16" font-weight="600" fill="#39345C">more weight</text>
+          <text x="590" y="286" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="16" font-weight="600" fill="#39345C">loss*</text>
+        </g>
+        <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="600" fill="#9a97b0">
+          <text x="60" y="415">Start</text>
+          <text x="330" y="415" text-anchor="middle">6 months</text>
+          <text x="630" y="415" text-anchor="end">12 months</text>
+        </g>
+      </svg>
+    </div>
+    <p class="finePrint">* Individual results vary. Based on published studies; not a guarantee. In 1 year, patients without diabetes and a BMI of 30 or higher achieved up to 6x greater weight loss with semaglutide than with placebo or lifestyle modifications. Semaglutide users lost nearly 11% of their body weight within the first 6 months. (Liu et al., Am J Clin Nutr)</p>
+  </div>
+</section>
+
+<section class="quotes">
+  <div class="wrap">
+    <h2>What our members are saying</h2>
+    <p class="sub">Real people. Real progress.</p>
+    <div class="quote-grid">
+      <div class="qcard">
+        <img src="assets/member-julie.jpg" alt="Julie, a RightWell member">
+        <div class="qbody">
+          <div class="qstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&ldquo;The cravings just switched off. For the first time in my life I&rsquo;m not thinking about food all day &mdash; and the scale finally moves.&rdquo;</p>
+          <div class="qwho">Julie L.</div>
+          <div class="qtag">Verified RightWell member</div>
+        </div>
+      </div>
+      <div class="qcard">
+        <img src="assets/member-james.jpg" alt="James, a RightWell member">
+        <div class="qbody">
+          <div class="qstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&ldquo;Everything happened from my couch. Quick assessment, provider call, and my medication showed up two days later.&rdquo;</p>
+          <div class="qwho">James O.</div>
+          <div class="qtag">Verified RightWell member</div>
+        </div>
+      </div>
+      <div class="qcard">
+        <img src="assets/member-michelle.jpg" alt="Michelle, a RightWell member">
+        <div class="qbody">
+          <div class="qstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&ldquo;My provider checks in and adjusts my plan every month. It feels like someone is actually in my corner this time.&rdquo;</p>
+          <div class="qwho">Michelle C.</div>
+          <div class="qtag">Verified RightWell member</div>
+        </div>
+      </div>
+    </div>
+    <p class="finePrint">Inspired by real patient success stories in similar telehealth programs. Average weight loss in clinical programs: 25&ndash;40 lbs. Individual results vary.</p>
+  </div>
+</section>
+
+<section class="game">
+  <div class="wrap game-grid">
+    <div class="pen-duo">
+      <img src="assets/wegovy-pen.jpg" alt="Wegovy (semaglutide) injection pen">
+      <img src="assets/zepbound-pen.jpg" alt="Zepbound (tirzepatide) injection pen">
+    </div>
+    <div>
+      <h2>GLP-1 medication <span class="accent">changes everything.</span></h2>
+      <h3>A game changer in metabolic health</h3>
+      <p class="lead">It works with your body to quiet hunger, support your metabolism, and drive real, sustainable weight loss beyond what diet and exercise can do alone.</p>
+      <div class="game-cards">
+        <div class="gcard"><b>Fast</b><p>A 5-minute online assessment to see if you qualify for medication.</p></div>
+        <div class="gcard"><b>Easy</b><p>A simple once-weekly treatment that fits into your routine &mdash; no clinics, no waiting rooms.</p></div>
+        <div class="gcard"><b>Personal</b><p>GLP-1 treatment plans tailored to your body and your goals.</p></div>
+      </div>
+      <a class="btn btn-orange cta" href="#">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<section class="results">
+  <div class="wrap">
+    <h2>The results speak for themselves</h2>
+    <div class="checks">
+      <div>An experience you&rsquo;ll actually stick with</div>
+      <div>Finally take control of your cravings</div>
+      <div>Move toward your goals with confidence</div>
+    </div>
+    <div class="rgrid">
+      <div class="rcard"><img src="assets/member-scott.jpg" alt="Scott, a RightWell member"><div class="rmeta"><b>Scott H.</b><span class="lbs">86 lbs lost</span><p>&ldquo;Back in the garage gym for the first time in years. My knees thank me.&rdquo;</p></div></div>
+      <div class="rcard"><img src="assets/member-dana.jpg" alt="Dana, a RightWell member"><div class="rmeta"><b>Dana W.</b><span class="lbs">58 lbs lost</span><p>&ldquo;I stopped white-knuckling every meal. It finally feels sustainable.&rdquo;</p></div></div>
+      <div class="rcard"><img src="assets/member-karen.jpg" alt="Karen, a RightWell member"><div class="rmeta"><b>Karen S.</b><span class="lbs">62 lbs lost</span><p>&ldquo;My doctor was shocked at my labs. Best I&rsquo;ve felt in 15 years.&rdquo;</p></div></div>
+    </div>
+    <p class="finePrint">Inspired by real patient success stories in similar telehealth programs. Average weight loss in clinical programs: 25&ndash;40 lbs. Individual results vary.</p>
+    <div class="cta-row"><a class="btn btn-orange btn-block cta" href="#">Get Started</a></div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">Just 4 simple steps to transformative weight loss &mdash; without ever leaving home.</p>
+    <div class="how-grid">
+      <div class="hcard"><div class="hnum">1</div><b>Take the assessment</b><p>Complete a short online assessment to see if GLP-1 medication is right for you.</p></div>
+      <div class="hcard"><div class="hnum">2</div><b>Provider review</b><p>A board-certified clinician reviews your information and, if approved, prescribes a treatment plan tailored to your goals.</p></div>
+      <div class="hcard"><div class="hnum">3</div><b>Fast, free delivery</b><p>Your medication ships fast and free &mdash; straight to your doorstep in discreet packaging.</p></div>
+      <div class="hcard"><div class="hnum">4</div><b>Ongoing support</b><p>24/7 access to your care team, with unlimited check-ins, coaching, and dosage guidance around the clock.</p></div>
+    </div>
+    <div class="cta-row"><a class="btn btn-orange btn-block cta" href="#">Get Started</a></div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="wrap">
+    <h2>Trusted medication, personalized for you</h2>
+    <p class="sub">Support your weight loss journey with treatment designed to work with your body &mdash; not against it.</p>
+    <div class="pcards">
+
+      <div class="pcard">
+        <img src="assets/wegovy-pen.jpg" alt="Wegovy (semaglutide) injection pen">
+        <h3>Wegovy<sup>&reg;</sup></h3>
+        <div class="price">$1,399 <small>/ month</small></div>
+        <span class="contains">Contains: Semaglutide</span>
+        <a class="btn btn-orange cta" href="#">Get Started</a>
+        <div class="pincl">
+          <b>Month-to-month plan includes:</b>
+          <div>Licensed provider review and ongoing medical oversight</div>
+          <div>Medical weight-care coach for personalized guidance and accountability</div>
+          <div>Tailored dosage adjustments based on your progress and response</div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <img src="assets/zepbound-pen.jpg" alt="Zepbound (tirzepatide) injection pen">
+        <h3>Zepbound<sup>&reg;</sup></h3>
+        <div class="price">$1,599 <small>/ month</small></div>
+        <span class="contains">Contains: Tirzepatide</span>
+        <a class="btn btn-orange cta" href="#">Get Started</a>
+        <div class="pincl">
+          <b>Month-to-month plan includes:</b>
+          <div>Licensed provider review and ongoing medical oversight</div>
+          <div>Medical weight-care coach for personalized guidance and accountability</div>
+          <div>Tailored dosage adjustments based on your progress and response</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="prov">
+  <div class="wrap prov-grid">
+    <img src="assets/provider.jpg" alt="A licensed healthcare provider">
+    <div>
+      <h2>Support from certified healthcare professionals</h2>
+      <p>Unlimited visits and messaging mean you can get answers, guidance, or reassurance whenever you need it &mdash; at no extra cost.</p>
+      <a class="btn btn-orange cta" href="#">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<section class="press">
+  <div class="wrap">
+    <blockquote>&ldquo;For the first time, losing weight didn&rsquo;t feel like a fight against my own body. It felt like my body was finally on my side.&rdquo;</blockquote>
+    <div class="who">&mdash; A RightWell member, 8 months in</div>
+  </div>
+</section>
+
+<section class="ready">
+  <div class="wrap">
+    <h2>Ready to <span class="accent">take back your body?</span></h2>
+    <div class="checks">
+      <div>See progress week after week</div>
+      <div>Doctor-guided treatment plans built around your body</div>
+      <div>Free delivery, straight to your door</div>
+      <div>No insurance required, no hidden fees</div>
+      <div>No obligations &mdash; cancel anytime</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>Do I need injections?</summary>
+        <p>Wegovy&reg; and Zepbound&reg; are simple once-weekly injection pens designed for easy at-home use. Your provider will walk you through everything and help determine the right treatment for you.</p>
+      </details>
+      <details>
+        <summary>How soon will I see results?</summary>
+        <p>Most patients notice reduced appetite within the first weeks and visible changes within 30&ndash;60 days. Individual results vary.</p>
+      </details>
+      <details>
+        <summary>Is this FDA-approved?</summary>
+        <p>Yes. Wegovy&reg; (semaglutide) and Zepbound&reg; (tirzepatide) are FDA-approved for chronic weight management when prescribed by a licensed clinician.</p>
+      </details>
+      <div class="cta-row" style="margin-top:18px;"><a class="btn btn-orange btn-block cta" href="#">Get Started</a></div>
+    </div>
+    <div>
+      <img src="assets/faq-guy.jpg" alt="Smiling RightWell member">
+      <p class="tagline">Safe. Effective. Personalized.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Start your transformation today</h2>
+    <p>A 5-minute assessment is all it takes. No insurance required.</p>
+    <a class="btn btn-orange btn-block cta" href="#">Get Started</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h4>Support</h4>
+    <a href="mailto:support@rightwell.co">support@rightwell.co</a>
+    <h4>Disclaimer</h4>
+    <p>The assessment available on this website does not create a doctor&ndash;patient relationship. Clinical services are provided by networks of U.S.-licensed clinicians who determine eligibility for GLP-1 treatment based on medical history and assessment responses. Providers retain full discretion to prescribe or decline GLP-1 medications. Results may vary and depend on individual adherence, provider guidance, and lifestyle changes. RightWell partners with certified U.S. pharmacies to ensure high standards of safety and quality. Member imagery and testimonials are illustrative, inspired by patient experiences in similar telehealth programs. Wegovy&reg; is a registered trademark of Novo Nordisk A/S. Zepbound&reg; is a registered trademark of Eli Lilly and Company. RightWell is not affiliated with, endorsed by, or sponsored by Novo Nordisk or Eli Lilly. All trademarks are the property of their respective owners.</p>
+    <p class="copyright">&copy; RightWell 2026. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Single place to set the quiz destination — every CTA on the page uses it.
+  var QUIZ_URL = "https://rightwell.co"; // TODO: swap for the real quiz URL
+  document.querySelectorAll(".cta").forEach(function(a){ a.href = QUIZ_URL; });
+</script>
+
+</body>
+</html>
