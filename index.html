@@ -204,11 +204,19 @@
   .final p{color:#C9CBE8;font-size:15px;margin-bottom:24px;}
 
   /* ---------- footer ---------- */
-  footer{background:var(--indigo-deep);padding:36px 0 44px;}
-  footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin:22px 0 10px;}
-  footer a{color:#C9CBE8;font-size:13px;text-decoration:none;display:block;margin-bottom:6px;}
-  footer p{color:#9A97B8;font-size:12px;line-height:1.7;margin-bottom:12px;}
-  .copyright{color:#7b7796;font-size:12px;margin-top:14px;}
+  footer{background:var(--indigo-deep);padding:40px 0 48px;}
+  .f-top{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:28px;}
+  .f-logo{display:flex;align-items:center;gap:8px;}
+  .f-logo .logo-word{color:#fff;}
+  .f-pill{display:inline-flex;align-items:center;gap:8px;background:#3A3660;color:#E4E3F2;font-size:13px;font-weight:600;border-radius:999px;padding:10px 18px;text-decoration:none;}
+  footer p{color:#9A97B8;font-size:12px;line-height:1.8;margin-bottom:14px;}
+  footer p b{color:#C9CBE8;}
+  .f-bottom{border-top:1px solid #45416B;margin-top:24px;padding-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;}
+  .copyright{color:#9A97B8;font-size:12px;}
+  .f-links{display:flex;flex-wrap:wrap;gap:6px 14px;}
+  .f-links a{color:#C9CBE8;font-size:12px;text-decoration:none;}
+  .f-links a:hover{text-decoration:underline;}
+  .f-badge img{width:74px;height:auto;}
 </style>
 </head>
 <body>
@@ -499,11 +507,30 @@
 
 <footer>
   <div class="wrap">
-    <h4>Support</h4>
-    <a href="mailto:support@rightwell.co">support@rightwell.co</a>
-    <h4>Disclaimer</h4>
-    <p>The assessment available on this website does not create a doctor&ndash;patient relationship. Clinical services are provided by networks of U.S.-licensed clinicians who determine eligibility for GLP-1 treatment based on medical history and assessment responses. Providers retain full discretion to prescribe or decline GLP-1 medications. Results may vary and depend on individual adherence, provider guidance, and lifestyle changes. RightWell partners with certified U.S. pharmacies to ensure high standards of safety and quality. Member imagery and testimonials are illustrative, inspired by patient experiences in similar telehealth programs. Wegovy&reg; is a registered trademark of Novo Nordisk A/S. Zepbound&reg; is a registered trademark of Eli Lilly and Company. RightWell is not affiliated with, endorsed by, or sponsored by Novo Nordisk or Eli Lilly. All trademarks are the property of their respective owners.</p>
-    <p class="copyright">&copy; RightWell 2026. All Rights Reserved.</p>
+    <div class="f-top">
+      <span class="f-logo"><span class="logo-badge">r</span><span class="logo-word">RightWell</span></span>
+      <a class="f-pill" href="mailto:help@rightwell.com">&#9993;&nbsp; help@rightwell.com</a>
+      <a class="f-pill" href="tel:18006342814">&#9742;&nbsp; 1-800-634-2814</a>
+      <span class="f-pill">Prescribey Inc. 1309 Coffeen Avenue Suite 1200, Sheridan, Wyoming 82801.</span>
+    </div>
+    <p><b>Prescribey, Inc (d/b/a RightWell)</b> is a patient management platform that provides administrative and operational support to licensed healthcare providers delivering care through third-party telehealth platforms, including TelegraMD and CareValidate. RightWell does not practice medicine, provide medical care, or create a patient-provider relationship. All clinical care and treatment decisions are made solely by the licensed provider.</p>
+    <p>Completion of any assessment or intake on the RightWell platform does not create a doctor-patient relationship. Providers independently review patient information and determine eligibility for treatment following a telehealth consultation, including whether to prescribe GLP-1 medications.</p>
+    <p>Telehealth services are not for emergencies. Always consult a licensed healthcare professional before starting any medication or weight management program.</p>
+    <p>Prescription medications are dispensed by U.S.-licensed pharmacies in compliance with applicable laws. Wegovy&reg; and Zepbound&reg; are FDA-approved for chronic weight management; Ozempic&reg; is FDA-approved for type 2 diabetes treatment but may be prescribed off-label for weight management. RightWell does not manufacture medications, and product appearance may vary. Wegovy&reg; and Ozempic&reg; are registered trademarks of Novo Nordisk A/S. Zepbound&reg; is a registered trademark of Eli Lilly and Company. RightWell is not affiliated with, endorsed by, or sponsored by Novo Nordisk or Eli Lilly. All trademarks are the property of their respective owners.</p>
+    <p>All references to results or benefits are based on self-reported user experiences. Individual results vary and depend on adherence to the treatment plan and provider guidance. No results are guaranteed.</p>
+    <p>Dietary supplements sold by RightWell, including Tone Protect, have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease. Supplements are not a substitute for medical care. Consult a healthcare professional before use.</p>
+    <div class="f-bottom">
+      <span class="copyright">&copy; 2026 Prescribey, Inc. All rights reserved</span>
+      <span class="f-links">
+        <a href="https://rightwell.freshdesk.com/support/home" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <a href="https://www.carevalidate.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://www.carevalidate.com/privacy" target="_blank" rel="noopener">Privacy Practices</a>
+        <a href="https://rightwell.freshdesk.com/support/home" target="_blank" rel="noopener">Medical Consent</a>
+        <a href="https://rightwell.freshdesk.com/support/home" target="_blank" rel="noopener">Bill of Rights</a>
+        <a href="https://rightwell.freshdesk.com/support/home" target="_blank" rel="noopener">Customer Support Center</a>
+      </span>
+      <a class="f-badge" href="https://www.legitscript.com/websites/?checker_keywords=rightwell.com" target="_blank" rel="noopener"><img src="assets/legitscript-badge.png" alt="LegitScript Certified"></a>
+    </div>
   </div>
 </footer>
 
