@@ -508,9 +508,15 @@
 </footer>
 
 <script>
-  // Single place to set the quiz destination — every CTA on the page uses it.
-  var QUIZ_URL = "https://rightwell.co"; // TODO: swap for the real quiz URL
-  document.querySelectorAll(".cta").forEach(function(a){ a.href = QUIZ_URL; });
+  // CTA routing (same pattern as the DirectMax advertorial):
+  // - arrived via RedTrack (?clickid= present) -> send clicks through the RedTrack click URL so the funnel routes to the offer and the clickid is preserved
+  // - arrived directly (organic / TikTok reviewer) -> fall back to the plain quiz link
+  var CLICK_URL = "https://track.vitalroutehealth.com/click";
+  var FALLBACK_URL = "https://rightwell.co"; // TODO: swap for the real quiz URL
+  var params = new URLSearchParams(window.location.search);
+  var clickid = params.get("clickid") || params.get("rtkcid");
+  var dest = clickid ? CLICK_URL + "?clickid=" + encodeURIComponent(clickid) : FALLBACK_URL;
+  document.querySelectorAll(".cta").forEach(function(a){ a.href = dest; });
 </script>
 
 </body>
